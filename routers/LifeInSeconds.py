@@ -27,7 +27,7 @@ async def render_life_in_seconds(request: Request):
 async def calculate_endpoint(birth_date: date = Query(..., description="Ngày sinh YYYY-MM-DD")):
     try:
         data = calculate_life_stats(birth_date)
-        return JSONResponse(status_code=200, content=data)
+        return JSONResponse(status_code=200, content=None) #Sửa ở đây nữa nè
     except ValueError as e:
         raise HTTPException(status_code=400, detail=str(e))
     except Exception as e:
