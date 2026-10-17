@@ -1,11 +1,159 @@
 <!DOCTYPE html>
-<html lang = "vi">
-    <head>
-        <meta charset="utf-8">
-        <title> trang chủ</title>
-    </head>
-    <body>
-        adsjflasdkjf
-        
-    </body>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Monster in Paris</title>
+  <!-- Tailwind CSS CDN -->
+  <script src="https://cdn.tailwindcss.com"></script>
+  <!-- Lucide Icons -->
+  <script src="https://unpkg.com/lucide@latest"></script>
+  <!-- Google Fonts: Space Grotesk / Inter -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@500;700&family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+
+  <script>
+    tailwind.config = {
+      darkMode: 'class',
+      theme: {
+        extend: {
+          fontFamily: {
+            sans: ['Inter', 'system-ui', 'sans-serif'],
+            display: ['"Space Grotesk"', 'sans-serif'],
+          },
+          colors: {
+            cream: '#f9f9f8',
+            toyCard: '#ffffff',
+            darkBg: '#121214',
+            darkCard: '#1a1a1e',
+            accent: '#0d6efd',
+            playfulYellow: '#f59e0b',
+            playfulPink: '#ec4899',
+          },
+          boxShadow: {
+            'neal': '0 4px 0 0 rgba(0, 0, 0, 0.08)',
+            'neal-hover': '0 8px 0 0 rgba(0, 0, 0, 0.1)',
+            'neal-active': '0 1px 0 0 rgba(0, 0, 0, 0.1)',
+            'neal-dark': '0 4px 0 0 rgba(255, 255, 255, 0.06)',
+            'neal-dark-hover': '0 8px 0 0 rgba(255, 255, 255, 0.1)',
+          }
+        }
+      }
+    }
+  </script>
+
+  <style>
+    /* Custom Neal.fun Style Physics & Buttons */
+    .toy-card {
+      transition: transform 0.18s cubic-bezier(0.2, 0.8, 0.2, 1), box-shadow 0.18s ease;
+    }
+    .toy-card:hover {
+      transform: translateY(-4px);
+    }
+    .toy-card:active {
+      transform: translateY(2px);
+    }
+
+    /* Modal Backdrop Transitions */
+    .modal-backdrop {
+      transition: opacity 0.25s ease-out;
+    }
+
+    /* Canvas cursor */
+    #circle-canvas {
+      touch-action: none;
+      cursor: crosshair;
+    }
+
+    /* Custom Scrollbars */
+    ::-webkit-scrollbar {
+      width: 8px;
+    }
+    ::-webkit-scrollbar-track {
+      background: transparent;
+    }
+    ::-webkit-scrollbar-thumb {
+      background: #d4d4d8;
+      border-radius: 9999px;
+    }
+  </style>
+</head>
+<body class="bg-cream text-neutral-800 min-h-screen flex flex-col font-sans transition-colors duration-200">
+
+  <!-- ================= TOP HEADER (ĐẨY VỀ GÓC TRÁI) ================= -->
+  <header class="w-full max-w-[1600px] mx-auto px-6 sm:px-10 pt-6 sm:pt-8">
+    <div class="flex items-center justify-between">
+      <a href="#" class="flex items-center gap-2.5 sm:gap-3 group">
+        <span class="font-display font-bold text-2xl sm:text-3xl text-neutral-900 tracking-tight">Monster</span>
+        <img src="static/images/logo.png" alt="logo" class="w-[90px] sm:w-[120px] h-auto object-contain transition-transform group-hover:scale-105 duration-200">
+        <span class="font-display font-bold text-2xl sm:text-3xl text-neutral-900 tracking-tight">Paris</span>
+      </a>
+
+      <!-- Huy hiệu phụ bên phải (để trống hoặc giữ chú thích) -->
+      <span class="text-xs sm:text-sm font-medium text-neutral-400 bg-neutral-100 border border-neutral-200 px-3 py-1 rounded-full">
+        room 3 only
+      </span>
+    </div>
+  </header>
+
+  <!-- ================= MAIN CONTENT & GRID 3 CỘT ================= -->
+  <main class="flex-grow max-w-[1600px] w-full mx-auto px-6 sm:px-10 py-8 sm:py-12">
+    
+    <!-- Lưới 3 cột co giãn tự động -->
+    <div id="cards-grid" class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6 sm:gap-8">
+      
+      <!-- Thẻ bài mẫu thử nghiệm với cảm giác bấm kiểu neal.fun -->
+      <a href="/life-in-seconds">
+        <div class="toy-card bg-white border-2 border-neutral-900 rounded-2xl p-6 shadow-neal cursor-pointer select-none">
+          <h3 class="font-display font-bold text-lg mb-1">Game 1</h3>
+          <p class="text-neutral-500 text-sm">ádflasjd</p>
+        </div>
+      </a>
+
+      <div class="toy-card bg-white border-2 border-neutral-900 rounded-2xl p-6 shadow-neal cursor-pointer select-none">
+        <h3 class="font-display font-bold text-lg mb-1">Game 2</h3>
+        <p class="text-neutral-500 text-sm">ádflasjd</p>
+      </div>
+
+      <div class="toy-card bg-white border-2 border-neutral-900 rounded-2xl p-6 shadow-neal cursor-pointer select-none">
+        <h3 class="font-display font-bold text-lg mb-1">Game 3</h3>
+        <p class="text-neutral-500 text-sm">ádflasjd</p>
+      </div>
+
+      <div class="toy-card bg-white border-2 border-neutral-900 rounded-2xl p-6 shadow-neal cursor-pointer select-none">
+      <h3 class="font-display font-bold text-lg mb-1">Game 4</h3>
+        <p class="text-neutral-500 text-sm">ádflasjd</p>
+      </div>
+
+      <div class="toy-card bg-white border-2 border-neutral-900 rounded-2xl p-6 shadow-neal cursor-pointer select-none">
+        <h3 class="font-display font-bold text-lg mb-1">Game 5</h3>
+        <p class="text-neutral-500 text-sm">ádflasjd</p>
+      </div>
+
+      <div class="toy-card bg-white border-2 border-neutral-900 rounded-2xl p-6 shadow-neal cursor-pointer select-none">
+        <h3 class="font-display font-bold text-lg mb-1">Game 6</h3>
+        <p class="text-neutral-500 text-sm">ádflasjd</p>
+      </div>
+
+      <div class="toy-card bg-white border-2 border-neutral-900 rounded-2xl p-6 shadow-neal cursor-pointer select-none">
+        <h3 class="font-display font-bold text-lg mb-1">Game 7</h3>
+        <p class="text-neutral-500 text-sm">ádflasjd</p>
+      </div>
+
+    </div>
+  </main>
+
+  <!-- ================= FOOTER ================= -->
+  <footer class="border-t border-neutral-200 py-8 px-6 mt-16 text-center text-sm text-neutral-500">
+    <div class="max-w-[1280px] mx-auto flex flex-col sm:flex-row items-center justify-between gap-4">
+      <p>© Ko lãnh bản quyền logo, cấm bén xén ra bên ngoài</p>
+      <div class="flex items-center gap-6">
+        <a href="#" class="hover:text-neutral-800 transition">Privacy</a>
+        <a href="#" class="hover:text-neutral-800 transition">About</a>
+      </div>
+    </div>
+  </footer>
+
+</body>
 </html>

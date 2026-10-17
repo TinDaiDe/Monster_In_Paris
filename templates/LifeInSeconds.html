@@ -1,0 +1,180 @@
+<!DOCTYPE html>
+<html lang="vi">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>{{ title }} - Monster in Paris</title>
+  
+  <script src="https://cdn.tailwindcss.com"></script>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@600;700&family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+
+  <style>
+    body {
+      font-family: 'Inter', sans-serif;
+      background-color: #f9f9f8;
+    }
+    .font-display {
+      font-family: 'Space Grotesk', sans-serif;
+    }
+    .tin-card {
+      border: 2px solid #111827;
+      border-radius: 1.25rem;
+      transition: all 0.15s ease;
+    }
+    .tin-btn {
+      border: 2px solid #111827;
+      border-radius: 1rem;
+      transition: all 0.1s ease;
+    }
+    .tin-btn:hover {
+      transform: translate(-1px, -1px);
+    }
+    .tin-btn:active {
+      transform: translate(3px, 3px);
+      box-shadow: 0px 0px 0px #111827;
+    }
+  </style>
+</head>
+<body class="text-neutral-900 min-h-screen flex flex-col">
+
+  <!-- Header -->
+  <header class="w-full max-w-[1600px] mx-auto px-6 sm:px-10 pt-6 sm:pt-8">
+    <a href="/" class="flex items-center gap-2.5 sm:gap-3 group">
+        <span class="font-display font-bold text-2xl sm:text-3xl text-neutral-900 tracking-tight">Monster</span>
+        <img src="../static/images/logo.png" alt="logo" class="w-[90px] sm:w-[120px] h-auto object-contain transition-transform group-hover:scale-105 duration-200">
+        <span class="font-display font-bold text-2xl sm:text-3xl text-neutral-900 tracking-tight">Paris</span>
+    </a>
+  </header>
+
+  <main class="flex-grow w-full max-w-[1280px] mx-auto px-6 py-6 flex flex-col items-center">
+    
+    <!-- Tiêu đề -->
+    <div class="text-center max-w-xl mx-auto mb-8">
+      <h1 class="font-display font-bold text-4xl sm:text-5xl tracking-tight mb-3">Life in Seconds</h1>
+      <p class="text-neutral-600 text-base">Cuộc đời bạn đã trôi qua bao nhiêu giây và những điều kỳ diệu cơ thể bạn đã âm thầm thực hiện?</p>
+    </div>
+
+    <!-- Ô nhập ngày sinh -->
+    <div class="tin-card bg-white p-6 sm:p-8 w-full max-w-lg mb-10 text-center">
+      <label for="birthDateInput" class="block font-display font-bold text-lg mb-3">Nhập ngày sinh của bạn:</label>
+      <div class="flex items-center gap-2 justify-center">
+        <input 
+            type="number" 
+            id="birthDay" 
+            placeholder="Ngày" 
+            min="1" max="31" 
+            class="w-20 px-3 py-2 rounded-xl border-2 border-neutral-900 text-center font-medium focus:outline-none focus:ring-2 focus:ring-blue-500"
+        >
+        <span class="font-bold text-lg">/</span>
+        <input 
+            type="number" 
+            id="birthMonth" 
+            placeholder="Tháng" 
+            min="1" max="12" 
+            class="w-20 px-3 py-2 rounded-xl border-2 border-neutral-900 text-center font-medium focus:outline-none focus:ring-2 focus:ring-blue-500"
+        >
+        <span class="font-bold text-lg">/</span>
+        <input 
+            type="number" 
+            id="birthYear" 
+            placeholder="Năm" 
+            min="1900" max="2026" 
+            class="w-28 px-3 py-2 rounded-xl border-2 border-neutral-900 text-center font-medium focus:outline-none focus:ring-2 focus:ring-blue-500"
+        >
+
+        <button id="calculateBtn" class="tin-btn bg-yellow-400 font-bold px-6 py-2 ml-2">
+            Khám phá 
+        </button>
+        </div>
+      <p id="errorMsg" class="text-red-500 text-sm mt-3 hidden font-medium"></p>
+    </div>
+
+    <div id="resultSection" class="w-full hidden">
+      
+      <!-- Bộ đếm giây -->
+      <div class="tin-card bg-blue-500 text-white p-8 text-center max-w-2xl mx-auto mb-10">
+        <p class="text-blue-100 font-medium uppercase tracking-wider text-xs sm:text-sm mb-1">Thời gian bạn đã sống trên Trái Đất</p>
+        <div id="liveSecondsDisplay" class="font-display font-bold text-4xl sm:text-6xl tracking-tight my-2">0</div>
+        <p class="text-blue-100 text-sm">giây và vẫn đang tích tắc nhảy tiếp...</p>
+      </div>
+
+      <h2 class="font-display font-bold text-2xl mb-6 text-center">Những con số đáng kinh ngạc:</h2>
+      <div id="statsGrid" class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6 sm:gap-7 w-full mb-12">
+      </div>
+
+    </div>
+
+  </main>
+
+  <footer class="border-t border-neutral-200 py-6 text-center text-sm text-neutral-500 mt-auto">
+    Monster in Paris • room 3 only
+  </footer>
+
+  <script>
+    const calculateBtn = document.getElementById('calculateBtn');
+    const resultSection = document.getElementById('resultSection');
+    const liveSecondsDisplay = document.getElementById('liveSecondsDisplay');
+    const statsGrid = document.getElementById('statsGrid');
+    const errorMsg = document.getElementById('errorMsg');
+
+    let currentTotalSeconds = 0;
+    let tickerInterval = null;
+
+    calculateBtn.addEventListener('click', async () => {
+        const d = document.getElementById('birthDay').value.padStart(2, '0');
+        
+        const m = blablabla// Sửa ở đây nữa nè
+        const y = document.getElementById('birthYear').value.padStart(4, '0');
+
+        if (!d || !m || !y) {
+            showError('Vui lòng nhập đầy đủ ngày, tháng và năm!');
+            return;
+        }
+
+        const formattedDate = `${y}-${m}-${d}`;
+
+        const response = await fetch(`/life-in-seconds/api/calculate?birth_date=${formattedDate}`);
+        const data = await response.json(); // Chổ nối giữa python(backend) và giao diện (fontend)
+        renderData(data);
+        });
+
+    function showError(msg) {
+      errorMsg.innerText = msg;
+      errorMsg.classList.remove('hidden');
+    }
+
+    function renderData(data) {
+      resultSection.classList.remove('hidden');
+      currentTotalSeconds = data.total_seconds;
+      
+      if (tickerInterval) clearInterval(tickerInterval);
+      liveSecondsDisplay.innerText = currentTotalSeconds.toLocaleString('vi-VN');
+      tickerInterval = setInterval(() => {
+        currentTotalSeconds++;
+        liveSecondsDisplay.innerText = currentTotalSeconds.toLocaleString('vi-VN');
+      }, 1000);
+
+      statsGrid.innerHTML = '';
+      data.stats.forEach(item => {
+        const card = document.createElement('div');
+        card.className = 'tin-card bg-white p-6 flex flex-col justify-between';
+        card.innerHTML = `
+          <div>
+            <p class="text-neutral-500 text-sm font-medium mb-1">${item.label}</p>
+            <div class="font-display font-bold text-2xl sm:text-3xl text-neutral-900 mb-1">
+              ${item.value.toLocaleString('vi-VN')} <span class="text-base font-normal text-neutral-500">${item.unit}</span>
+            </div>
+          </div>
+          <p class="text-xs text-neutral-400 mt-4 border-t border-neutral-100 pt-2">${item.desc}</p>
+        `;
+        statsGrid.appendChild(card);
+      });
+
+      resultSection.scrollIntoView({ behavior: 'smooth' });
+    }
+  </script>
+
+</body>
+</html>
