@@ -44,28 +44,6 @@
   </script>
 
   <style>
-    /* Custom Neal.fun Style Physics & Buttons */
-    .toy-card {
-      transition: transform 0.18s cubic-bezier(0.2, 0.8, 0.2, 1), box-shadow 0.18s ease;
-    }
-    .toy-card:hover {
-      transform: translateY(-4px);
-    }
-    .toy-card:active {
-      transform: translateY(2px);
-    }
-
-    /* Modal Backdrop Transitions */
-    .modal-backdrop {
-      transition: opacity 0.25s ease-out;
-    }
-
-    /* Canvas cursor */
-    #circle-canvas {
-      touch-action: none;
-      cursor: crosshair;
-    }
-
     /* Custom Scrollbars */
     ::-webkit-scrollbar {
       width: 8px;
@@ -80,8 +58,7 @@
   </style>
 </head>
 <body class="bg-cream text-neutral-800 min-h-screen flex flex-col font-sans transition-colors duration-200">
-
-  <!-- ================= TOP HEADER (ĐẨY VỀ GÓC TRÁI) ================= -->
+ <!------- HEDER ------->
   <header class="w-full max-w-[1600px] mx-auto px-6 sm:px-10 pt-6 sm:pt-8">
     <div class="flex items-center justify-between">
       <a href="#" class="flex items-center gap-2.5 sm:gap-3 group">
@@ -97,17 +74,15 @@
     </div>
   </header>
 
-  <!-- ================= MAIN CONTENT & GRID 3 CỘT ================= -->
   <main class="flex-grow max-w-[1600px] w-full mx-auto px-6 sm:px-10 py-8 sm:py-12">
     
     <!-- Lưới 3 cột co giãn tự động -->
     <div id="cards-grid" class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6 sm:gap-8">
       
-      <!-- Thẻ bài mẫu thử nghiệm với cảm giác bấm kiểu neal.fun -->
       <a href="/life-in-seconds">
         <div class="toy-card bg-white border-2 border-neutral-900 rounded-2xl p-6 shadow-neal cursor-pointer select-none">
-          <h3 class="font-display font-bold text-lg mb-1">Game 1</h3>
-          <p class="text-neutral-500 text-sm">ádflasjd</p>
+          <h3 class="font-display font-bold text-lg mb-1">Game 1: Đời bạn tính bằng giây</h3>
+          <p class="text-neutral-500 text-sm">Tài nguyên lớn nhất của bạn là thời gian</p>
         </div>
       </a>
 
