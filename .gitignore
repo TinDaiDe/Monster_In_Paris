@@ -1,0 +1,16 @@
+# Môi trường ảo
+venv/
+.venv/
+env/
+.env/
+
+# Bộ nhớ đệm Python & Bytecode
+__pycache__/
+*.py[cod]
+*$py.class
+
+# Cache kiểm thử và công cụ khác (nếu có)
+.pytest_cache/
+.mypy_cache/
+.ruff_cache/
+**/__pycache__/
